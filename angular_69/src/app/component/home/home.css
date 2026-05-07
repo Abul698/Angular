@@ -1,0 +1,94 @@
+.home-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.booking-panel {
+  width: 400px;
+  padding: 40px;
+  background: white;
+  z-index: 10;
+  box-shadow: 10px 0 15px rgba(0,0,0,0.05);
+}
+
+.brand-logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: #2563eb;
+  margin-bottom: 50px;
+}
+
+.card-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  line-height: 1.2;
+}
+
+/* Input Styles */
+.input-group {
+  position: relative;
+  background: #f3f4f6;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.input-field input {
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+}
+.pickup { background: #2563eb; }
+.destination { background: black; }
+
+.line {
+  height: 20px;
+  width: 2px;
+  background: #d1d5db;
+  margin-left: 3px;
+}
+
+/* Button & Options */
+.ride-options { margin-top: 30px; }
+.option {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 2px solid #2563eb;
+  border-radius: 12px;
+  gap: 15px;
+}
+
+.btn-confirm {
+  width: 100%;
+  margin-top: 30px;
+  background: black;
+  color: white;
+  padding: 18px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.map-placeholder {
+  flex: 1;
+  background: #e5e7eb; /* Placeholder for map */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
