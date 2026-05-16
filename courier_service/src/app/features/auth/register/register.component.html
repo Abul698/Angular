@@ -1,0 +1,89 @@
+<!-- <div class="row justify-content-center align-items-center vh-100">
+  <div class="col-md-5">
+
+    <div class="card shadow-lg border-0 rounded-4 p-4">
+
+      <h2 class="text-center mb-4 fw-bold text-success">
+        Register
+      </h2>
+
+      <form>
+
+        <div class="mb-3">
+          <label>Name</label>
+          <input type="text" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label>Email</label>
+          <input type="email" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label>Password</label>
+          <input type="password" class="form-control">
+        </div>
+
+        <button class="btn btn-success w-100">
+          Register
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div> -->
+
+<!-- register.component.html -->
+<div class="min-h-screen bg-slate-100 flex items-center justify-center p-6 font-sans">
+  <div class="w-full max-w-lg bg-white p-8 rounded-2xl shadow-xl">
+    <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">নতুন অ্যাকাউন্ট তৈরি করুন</h2>
+    
+    <div *ngIf="errorMessage" class="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">{{ errorMessage }}</div>
+
+    <form (ngSubmit)="onSubmit()" #regForm="ngForm" class="space-y-4">
+      <div>
+        <label class="block text-slate-600 text-sm font-medium mb-1">পূর্ণ নাম</label>
+        <input type="text" [(ngModel)]="fullName" name="fullName" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      </div>
+
+      <div>
+        <label class="block text-slate-600 text-sm font-medium mb-1">মোবাইল নম্বর</label>
+        <input type="text" [(ngModel)]="phone" name="phone" placeholder="01XXXXXXXXX" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      </div>
+
+      <div>
+        <label class="block text-slate-600 text-sm font-medium mb-1">ইমেইল ঠিকানা</label>
+        <input type="email" [(ngModel)]="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      </div>
+
+      <div>
+        <label class="block text-slate-600 text-sm font-medium mb-1">পাসওয়ার্ড</label>
+        <input type="password" [(ngModel)]="password" name="password" (input)="checkPasswordStrength()" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <!-- পাসওয়ার্ড স্ট্রেন্থ মিটার -->
+        <div class="mt-1 flex space-x-1 h-1.5 w-full bg-slate-200 rounded">
+          <div class="h-full rounded transition-all duration-300" [ngClass]="{'w-1/3 bg-red-500': passwordStrength==='weak', 'w-2/3 bg-yellow-500': passwordStrength==='medium', 'w-full bg-green-500': passwordStrength==='strong'}"></div>
+        </div>
+        <span class="text-xs text-slate-500">পাসওয়ার্ড স্ট্রেন্থ: {{ passwordStrength === 'weak' ? 'দুর্বল' : passwordStrength === 'medium' ? 'মাঝারি' : 'শক্তিশালী' }}</span>
+      </div>
+
+      <div>
+        <label class="block text-slate-600 text-sm font-medium mb-1">পাসওয়ার্ড নিশ্চিত করুন</label>
+        <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+      </div>
+
+      <div>
+        <label class="block text-slate-600 text-sm font-medium mb-1">ঠিকানা</label>
+        <textarea [(ngModel)]="address" name="address" rows="2" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+      </div>
+
+      <label class="flex items-center text-slate-600 cursor-pointer text-sm">
+        <input type="checkbox" [(ngModel)]="agreeTerms" name="agreeTerms" required class="mr-2 rounded text-indigo-600"> আমি শর্তাবলীতে সম্মত আছি
+      </label>
+
+      <button type="submit" [disabled]="!regForm.form.valid || !agreeTerms" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition duration-200 disabled:opacity-50">নিবন্ধন করুন</button>
+    </form>
+
+    <p class="text-center text-sm text-slate-600 mt-4"><a routerLink="/login" class="text-indigo-600 font-medium hover:underline">লগইন পেজে ফিরে যান</a></p>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+/* Hero Section Dark Gradient Background */
+.hero-section {
+  background: linear-gradient(135deg, #1e1e2f 0%, #0f1016 100%);
+  min-height: 70vh;
+}
+
+/* Blur style for stat elements */
+.bg-blur {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(8px);
+}
+
+.stat-pill {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Service Box Custom Styles */
+.bg-primary-soft {
+  background-color: rgba(13, 110, 253, 0.1);
+}
+
+.icon-box {
+  width: 60px;
+  height: 60px;
+}
+
+/* Smooth Transitions for Hover Effects */
+.transition-all {
+  transition: all 0.25s ease-in-out;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1) !important;
+}
+
+/* General Layout helpers */
+.max-w-xl {
+  max-width: 36rem;
+}
+
+.fw-extrabold {
+  font-weight: 800;
+}
+
+.tracking-wider {
+  letter-spacing: 1px;
+}
+
+/* Payment badges clean setup */
+.filter-grayscale span {
+  min-width: 120px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}

@@ -1,0 +1,137 @@
+/* Login Container with Mesh Gradient */
+.login-page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top right, #16213e, #1a1a2e, #0a0a12);
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Floating Geometric Decorations */
+.login-page-wrapper::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(45deg, rgba(233, 69, 96, 0.1), transparent);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    top: -10%;
+    right: -5%;
+    animation: morphing 15s infinite alternate;
+}
+
+@keyframes morphing {
+    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    100% { border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%; }
+}
+
+/* Glass Login Card */
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 45px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    text-align: center;
+}
+
+/* Logo Styling */
+.login-logo {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login-logo i {
+    color: #e94560;
+}
+
+/* Input Group Design */
+.input-group-custom {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group-custom label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.login-field {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.login-field:focus {
+    border-color: #e94560;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 15px rgba(233, 69, 96, 0.2);
+}
+
+/* Futuristic Submit Button */
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background: #e94560;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-login:hover {
+    background: #ff4d6d;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(233, 69, 96, 0.4);
+}
+
+/* Helper Links */
+.login-footer {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.login-footer a {
+    color: #e94560;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,73 @@
+<div class="space-y-6 p-4 lg:p-6 bg-slate-900 text-slate-100 min-h-screen printable-area">
+  
+  <div class="flex justify-between items-center print:hidden">
+    <div>
+      <h1 class="text-2xl font-black text-white">Central Ledger & Revenue Audits</h1>
+      <p class="text-xs text-slate-400 mt-1">Central transactional statement reconciliation report hub.</p>
+    </div>
+    <button (click)="triggerPrint()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all shadow-md">
+      🖨️ Download PDF / Print Report
+    </button>
+  </div>
+
+  <!-- SHOW SYSTEM RUNTIME STAMP WHEN PRINTING -->
+  <div class="hidden print:block border-b border-slate-300 pb-4 mb-4 text-slate-900">
+    <h1 class="text-xl font-bold">LogiFast Courier Management System</h1>
+    <p class="text-xs">Generated Audit Stamp Ledger: {{ '2026-05-16' }} | Location Hub Filter: Global</p>
+  </div>
+
+  <!-- FINANCIAL STRATIFICATION ROW -->
+  <div class="grid grid-cols-2 lg:grid-cols-5 gap-4">
+    <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl print:border-slate-300 print:text-black">
+      <span class="text-[10px] text-slate-400 uppercase font-bold">Gross Fees Revenue</span>
+      <p class="text-lg font-black text-white print:text-black mt-0.5">৳ {{ grossRevenue | number }}</p>
+    </div>
+    <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl print:border-slate-300 print:text-black">
+      <span class="text-[10px] text-slate-400 uppercase font-bold">COD Escrow Processed</span>
+      <p class="text-lg font-black text-amber-500 print:text-black mt-0.5">৳ {{ codCollected | number }}</p>
+    </div>
+    <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl print:border-slate-300 print:text-black">
+      <span class="text-[10px] text-slate-400 uppercase font-bold">Online Gateways Net</span>
+      <p class="text-lg font-black text-indigo-400 print:text-black mt-0.5">৳ {{ onlinePayments | number }}</p>
+    </div>
+    <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl print:border-slate-300 print:text-black">
+      <span class="text-[10px] text-slate-400 uppercase font-bold">Rider Remittances Out</span>
+      <p class="text-lg font-black text-rose-400 print:text-black mt-0.5">৳ {{ riderPayouts | number }}</p>
+    </div>
+    <div class="bg-slate-950 border border-slate-800 p-4 rounded-2xl col-span-2 lg:col-span-1 bg-gradient-to-br from-indigo-950 to-slate-950 print:from-white print:to-white print:border-slate-300 print:text-black">
+      <span class="text-[10px] text-indigo-400 print:text-slate-500 uppercase font-bold">Net Operational Yield</span>
+      <p class="text-lg font-black text-emerald-400 print:text-black mt-0.5">৳ {{ netProfit | number }}</p>
+    </div>
+  </div>
+
+  <!-- BREAKDOWN BALANCE MATRIX -->
+  <div class="bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden print:border-slate-300">
+    <div class="p-4 border-b border-slate-800 print:border-slate-300">
+      <h3 class="text-xs font-black text-white uppercase tracking-wider print:text-black">Historical Monthly Remittance Cycle</h3>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-xs border-collapse">
+        <thead class="bg-slate-900 text-slate-400 font-bold uppercase tracking-wider border-b border-slate-800 print:bg-slate-100 print:text-black print:border-slate-300">
+          <tr>
+            <th class="p-4">Billing Cycle</th>
+            <th class="p-4">Volume</th>
+            <th class="p-4">COD Vol</th>
+            <th class="p-4">Online Vol</th>
+            <th class="p-4">Rider Payout</th>
+            <th class="p-4">Net Spread</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-900 font-medium text-slate-300 print:text-black print:divide-slate-200">
+          <tr *ngFor="let row of monthlyBreakdown" class="hover:bg-slate-900/40 print:hover:bg-transparent">
+            <td class="p-4 font-bold text-white print:text-black">{{ row.month }}</td>
+            <td class="p-4">{{ row.volume }} shipments</td>
+            <td class="p-4">৳ {{ row.cod | number }}</td>
+            <td class="p-4">৳ {{ row.online | number }}</td>
+            <td class="p-4 text-rose-400 print:text-black">৳ {{ row.payout | number }}</td>
+            <td class="p-4 font-bold text-emerald-400 print:text-black">৳ {{ row.profit | number }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

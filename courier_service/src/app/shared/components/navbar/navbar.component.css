@@ -1,0 +1,11 @@
+.avatar {
+  width: 35px;
+  height: 35px;
+  font-size: 0.9rem;
+}
+.dropdown-menu {
+  min-width: 200px;
+}
+.dropdown-menu-item:active {
+  background-color: #0d6efd;
+}

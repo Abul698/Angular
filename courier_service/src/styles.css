@@ -1,0 +1,455 @@
+/* /* You can add global styles to this file, and also import other style files
+body {
+  background: #f5f7fb;
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.form-control {
+  height: 50px;
+  border-radius: 12px;
+}
+
+.btn {
+  border-radius: 12px;
+  padding: 10px 20px;
+} */
+/* 
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --dark-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  --accent-gradient: linear-gradient(45deg, #e94560, #fb4b6b);
+}
+
+// Background Animation
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gorgeous-bg {
+  min-height: 100vh;
+  background: var(--dark-gradient);
+  background-size: 400% 400%;
+  animation: moveGradient 15s ease infinite;
+  position: relative;
+  overflow: hidden;
+
+  // SVG Pattern Overlay for depth
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+/* } */ 
+/* 1. IMPORT GOOGLE FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* 2. DESIGN SYSTEM VARIABLES */
+:root {
+  --primary-dark: #1a1a2e;
+  --secondary-dark: #16213e;
+  --accent-red: #e94560;
+  --soft-gold: #f5a623;
+  --success-green: #27ae60;
+  --glass-white: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-main: #2d3436;
+  --text-muted: #636e72;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 3. GLOBAL RESET & BASE TYPOGRAPHY */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8f9fa;
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* 4. GORGEOUS ANIMATED BACKGROUNDS */
+.gorgeous-bg {
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+  background-size: 400% 400%;
+  animation: meshGradient 15s ease infinite;
+  position: relative;
+}
+
+@keyframes meshGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 5. GLASSMORPHISM UI KIT */
+.glass-card {
+  background: var(--glass-white);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* 6. BUTTONS & CTAs */
+.btn-swift {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 12px;
+  transition: var(--transition);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary-swift {
+  background: var(--accent-red);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(233, 69, 96, 0.3);
+}
+
+.btn-primary-swift:hover {
+  background: #d63d57;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(233, 69, 96, 0.4);
+}
+
+/* 7. DASHBOARD LAYOUT STYLES */
+.sidebar-nav {
+  background: var(--primary-dark);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.nav-link-custom {
+  color: rgba(255, 255, 255, 0.6);
+  padding: 12px 15px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.nav-link-custom:hover, .nav-link-custom.active {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+/* 8. TRACKING STEPPER DESIGN */
+.stepper-wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-top: 40px;
+}
+
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.stepper-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: -50%;
+  z-index: 1;
+}
+
+.stepper-item:first-child::before { content: none; }
+
+.step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  color: white;
+  margin-bottom: 6px;
+}
+
+.stepper-item.completed .step-counter { background-color: var(--success-green); }
+.stepper-item.active .step-counter { background-color: var(--accent-red); }
+
+/* 9. FORM CONTROL STYLING */
+.form-control-swift {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  transition: var(--transition);
+}
+
+.form-control-swift:focus {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 4px rgba(233, 69, 96, 0.1);
+  outline: none;
+}
+
+/* 10. RESPONSIVE UTILITIES */
+@media (max-width: 768px) {
+  .display-3 { font-size: 2.5rem; }
+  .sidebar-nav { min-height: auto; width: 100%; }
+}
+
+/* ==========================================================================
+   GLOBAL DESIGN CONFIGURATION & ANIMATIONS (BOOTSTRAP UTILITIES)
+   ========================================================================== */
+
+/* গুগল ফন্ট ইম্পোর্ট */
+@import url('https://googleapis.com');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #0f172a !important; /* Slate 900 ডার্ক ব্যাকগ্রাউন্ড */
+  color: #f8fafc !important; /* হালকা টেক্সট কালার */
+}
+
+/* বুটস্ট্র্যাপের কার্ড এবং ইনপুটগুলোকে ডার্ক থিমে রূপান্তর */
+.card, .modal-content, .list-group-item {
+  background-color: #020617 !important; /* Slate 950 */
+  border: 1px solid #1e293b !important; /* Slate 800 */
+  color: #f8fafc !important;
+}
+
+.form-control, .form-select {
+  background-color: #0f172a !important; /* Slate 900 */
+  border: 1px solid #1e293b !important;
+  color: #f8fafc !important;
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: #6366f1 !important; /* Indigo 500 */
+  box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25) !important;
+}
+
+/* কাস্টম ফেইড-ইন অ্যানিমেশন */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* স্ক্রলবার কাস্টমাইজেশন */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* ==========================================================================
+   PRINT / REVENUE PDF RECONCILIATION STYLE ENGINE (FOR window.print())
+   ========================================================================== */
+
+@media print {
+  /* প্রিন্ট করার সময় ব্যাকগ্রাউন্ড সাদা এবং টেক্সট কালো হবে */
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12px !important;
+  }
+
+  /* প্রিন্ট কপিতে সাইডবার, হেডার এবং বাটনগুলো হাইড থাকবে */
+  .print-hidden,
+  header,
+  aside,
+  .sidebar,
+  .navbar,
+  button,
+  .btn,
+  nav,
+  select,
+  .no-print {
+    display: none !important;
+  }
+
+  /* প্রিন্ট এরিয়া পজিশনিং ঠিক করা */
+  .printable-area {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  /* কার্ডের বর্ডার এবং ব্যাকগ্রাউন্ড সাদা করা */
+  .card, 
+  .bg-slate-900, 
+  .bg-slate-950, 
+  .list-group-item,
+  .bg-gradient {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important; /* Slate 300 বর্ডার */
+    color: #000000 !important;
+    box-shadow: none !important;
+  }
+
+  /* সমস্ত লেখার রঙ প্রিন্ট কপিতে কালো নিশ্চিত করা */
+  p, span, h1, h2, h3, h4, td, th, label {
+    color: #000000 !important;
+  }
+
+  /* টেবিল লেআউট প্রিন্ট ফ্রেন্ডলি করা */
+  table, .table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    color: #000000 !important;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 8px !important;
+  }
+}
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+:root {
+  --primary-dark: #0f172a;
+  --sidebar-bg: #1e293b;
+  --accent-red: #ef4444;
+  --accent-green: #22c55e;
+  --accent-orange: #f97316;
+  --accent-blue: #3b82f6;
+  --bkash-pink: #e2136e;
+  --nagad-orange: #f6821f;
+  --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --border-radius: 12px;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+/* Sidebar */
+.sidebar {
+  min-height: 100vh;
+  width: 260px;
+  background: var(--sidebar-bg);
+  color: white;
+  position: fixed;
+  left: 0; top: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+}
+.sidebar .nav-link { color: rgba(255,255,255,0.7); padding: 10px 20px; border-radius: 8px; margin: 2px 8px; transition: all 0.2s; }
+.sidebar .nav-link:hover, .sidebar .nav-link.active { color: white; background: rgba(255,255,255,0.12); }
+.sidebar .nav-link i { width: 20px; margin-right: 8px; }
+
+/* Main content offset */
+.main-content { margin-left: 260px; min-height: 100vh; }
+@media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .sidebar.open { transform: translateX(0); } .main-content { margin-left: 0; } }
+
+/* KPI Cards */
+.kpi-card { border: none; border-radius: var(--border-radius); box-shadow: var(--card-shadow); transition: transform 0.2s; }
+.kpi-card:hover { transform: translateY(-4px); }
+.kpi-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+
+/* Status badges */
+.badge-out-for-delivery { background-color: #6f42c1 !important; color: white; }
+
+/* Tracking timeline */
+.tracking-timeline { display: flex; justify-content: space-between; position: relative; }
+.tracking-timeline::before { content: ''; position: absolute; top: 20px; left: 0; right: 0; height: 2px; background: #e2e8f0; z-index: 0; }
+.timeline-step { display: flex; flex-direction: column; align-items: center; z-index: 1; }
+.timeline-dot { width: 40px; height: 40px; border-radius: 50%; background: #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #94a3b8; border: 3px solid white; box-shadow: 0 0 0 2px #e2e8f0; }
+.timeline-dot.active { background: var(--accent-blue); color: white; box-shadow: 0 0 0 4px rgba(59,130,246,0.2); }
+.timeline-dot.completed { background: var(--accent-green); color: white; }
+.timeline-dot.cancelled { background: var(--accent-red); color: white; }
+
+/* Step wizard */
+.step-wizard .step-num { width: 36px; height: 36px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; border: 2px solid #dee2e6; color: #6c757d; }
+.step-wizard .step-num.active { background: #3b82f6; border-color: #3b82f6; color: white; }
+.step-wizard .step-num.completed { background: #22c55e; border-color: #22c55e; color: white; }
+
+/* bKash payment */
+.bkash-card { border: 2px solid var(--bkash-pink); background: #fdf2f8; }
+.bkash-btn { background: var(--bkash-pink); color: white; border: none; }
+
+/* Nagad payment */
+.nagad-card { border: 2px solid var(--nagad-orange); background: #fff9f0; }
+.nagad-btn { background: var(--nagad-orange); color: white; border: none; }
+
+/* Auth pages */
+.auth-brand-panel { background: linear-gradient(145deg, #0f172a 0%, #1e3a5f 50%, #1e40af 100%); min-height: 100vh; color: white; }
+
+/* Hero section */
+.hero-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1e3a5f 100%); color: white; padding: 80px 0; }
+
+/* Loader overlay */
+.loading-overlay { position: fixed; inset: 0; background: rgba(255,255,255,0.85); z-index: 9999; display: flex; align-items: center; justify-content: center; }
+
+/* Toast container */
+.toast-container-custom { position: fixed; top: 20px; right: 20px; z-index: 9999; min-width: 300px; }

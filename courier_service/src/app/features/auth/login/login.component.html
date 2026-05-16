@@ -1,0 +1,117 @@
+<!-- <div class="row justify-content-center align-items-center vh-100">
+  <div class="col-md-4">
+
+    <div class="card shadow-lg border-0 rounded-4 p-4">
+
+      <h2 class="text-center mb-4 fw-bold text-primary">
+        Login
+      </h2>
+
+      <form>
+
+        <div class="mb-3">
+          <label>Email</label>
+          <input type="email" class="form-control">
+        </div>
+
+        <div class="mb-3">
+          <label>Password</label>
+          <input type="password" class="form-control">
+        </div>
+  <button class="btn btn-primary w-100">
+          Login
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div> -->
+
+<!-- <div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4" style="width: 400px; border-radius: 15px;">
+    <div class="card-body">
+      <h3 class="text-center mb-4 font-weight-bold text-primary">Login</h3>
+      
+      <form>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="name@example.com">
+        </div>
+        
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="********">
+        </div>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </div>
+      </form>
+
+      <div class="text-center mt-3">
+        <small>Don't have an account? <a href="#">Register</a></small>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="min-h-screen flex flex-col md:flex-row font-sans">
+  <!-- বাম দিকের ব্র্যান্ড প্যানেল -->
+  <div class="md:w-1/2 bg-gradient-to-tr from-indigo-900 via-slate-900 to-black text-white flex flex-col justify-center p-12">
+    <div class="max-w-md mx-auto">
+      <h1 class="text-4xl font-extrabold tracking-tight mb-4 text-indigo-400">CourierBD</h1>
+      <p class="text-lg text-slate-300">আপনার পার্সেল, আমাদের দায়িত্ব। দ্রুত, নিরাপদ ও নির্ভরযোগ্য কুরিয়ার সার্ভিস।</p>
+    </div>
+  </div>
+
+  <!-- ডান দিকের ফর্ম প্যানেল -->
+  <div class="md:w-1/2 bg-slate-50 flex items-center justify-center p-8">
+    <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl">
+      <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">লগইন করুন</h2>
+      
+      <div *ngIf="errorMessage" class="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm">{{ errorMessage }}</div>
+
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="mb-4">
+          <label class="block text-slate-600 text-sm font-medium mb-1">ইমেইল ঠিকানা</label>
+          <input type="email" [(ngModel)]="email" name="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        </div>
+        
+        <div class="mb-4 relative">
+          <label class="block text-slate-600 text-sm font-medium mb-1">পাসওয়ার্ড</label>
+          <input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" name="password" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <button type="button" (click)="togglePassword()" class="absolute right-3 top-8 text-slate-500 text-sm font-medium">
+            {{ showPassword ? 'লুকান' : 'দেখান' }}
+          </button>
+        </div>
+
+        <div class="flex items-center justify-between mb-6 text-sm">
+          <label class="flex items-center text-slate-600 cursor-pointer">
+            <input type="checkbox" [(ngModel)]="rememberMe" name="rememberMe" class="mr-2 rounded text-indigo-600"> মনে রাখুন
+          </label>
+          <a routerLink="/forgot-password" class="text-indigo-600 hover:underline">পাসওয়ার্ড ভুলে গেছেন?</a>
+        </div>
+
+        <button type="submit" [disabled]="!loginForm.form.valid" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2.5 rounded-lg transition duration-200 disabled:opacity-50">লগইন</button>
+      </form>
+
+      <p class="text-center text-sm text-slate-600 mt-6">নতুন অ্যাকাউন্ট চান? <a routerLink="/register" class="text-indigo-600 font-medium hover:underline">রেজিস্ট্রেশন করুন</a></p>
+
+      <!-- ডেমো ক্রেডেনশিয়াল প্যানেল -->
+      <div class="mt-8 border-t pt-4">
+        <button (click)="showDemo = !showDemo" class="w-full text-left text-xs font-semibold text-slate-500 flex justify-between items-center focus:outline-none">
+          <span>Demo Credentials (টেস্ট করার জন্য)</span>
+          <span>{{ showDemo ? '▲' : '▼' }}</span>
+        </button>
+        <div *ngIf="showDemo" class="mt-3 bg-slate-100 p-3 rounded-lg text-xs space-y-2 text-slate-700">
+          <div (click)="setDemo('admin@courier.bd', 'admin123')" class="cursor-pointer hover:bg-slate-200 p-1 rounded"><strong>Admin:</strong> admin@courier.bd / admin123</div>
+          <div (click)="setDemo('karim@courier.bd', 'karim123')" class="cursor-pointer hover:bg-slate-200 p-1 rounded"><strong>Rider:</strong> karim@courier.bd / karim123</div>
+          <div (click)="setDemo('fatema@gmail.com', 'fatema123')" class="cursor-pointer hover:bg-slate-200 p-1 rounded"><strong>Customer:</strong> fatema@gmail.com / fatema123</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

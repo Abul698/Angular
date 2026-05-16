@@ -1,0 +1,104 @@
+<div class="container py-4 animate-fadeIn">
+  
+  <!-- CONTROLS & HEADER MATRIX -->
+  <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-4">
+    <div>
+      <h1 class="h3 font-weight-bold text-white mb-1">System Notification Hub</h1>
+      <p class="text-muted small mb-0">Review transactional lifecycle logs, system dispatches, and operational status updates.</p>
+    </div>
+    
+    <div class="d-flex gap-2">
+      <button 
+        (click)="markAllAsRead()" 
+        [disabled]="isLoading || notifications.length === 0" 
+        class="btn btn-outline-light btn-sm font-weight-semibold rounded-pill px-3 transition"
+      >
+        Mark All Read
+      </button>
+      <button 
+        (click)="loadNotifications()" 
+        [disabled]="isLoading" 
+        class="btn btn-primary btn-sm font-weight-bold rounded-pill px-3 transition shadow"
+      >
+        Refresh Feed
+      </button>
+    </div>
+  </div>
+
+  <!-- LOADER RUNTIME RUNSHEET -->
+  <div *ngIf="isLoading && notifications.length === 0" class="text-center py-5 my-4 card shadow-sm">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Syncing records...</span>
+    </div>
+    <p class="text-muted small mt-3 mb-0 font-weight-medium">Syncing notification manifest matrices...</p>
+  </div>
+
+  <!-- NOTIFICATION LOOP FEED CONTEXT -->
+  <div *ngIf="!isLoading && notifications.length > 0" class="card shadow-lg border-0 overflow-hidden">
+    <div class="list-group list-group-flush bg-transparent">
+      
+      <div 
+        *ngFor="let item of notifications" 
+        (click)="markAsRead(item)"
+        [class.bg-dark-highlight]="!item.isRead"
+        class="list-group-item bg-slate-card border-slate-edge list-group-item-action p-4 d-flex align-items-start gap-3 text-white position-relative cursor-pointer transition"
+      >
+        <!-- STATIC TYPE ICON ROUTING BADGES -->
+        <div class="flex-shrink-0 mt-1">
+          <!-- Success Status Icon -->
+          <span *ngIf="item.type === 'success'" class="badge bg-success-soft p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+            <span class="text-success font-weight-bold">✓</span>
+          </span>
+          <!-- Info Status Icon -->
+          <span *ngIf="item.type === 'info'" class="badge bg-info-soft p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+            <span class="text-info font-weight-bold">ℹ</span>
+          </span>
+          <!-- Warning Status Icon -->
+          <span *ngIf="item.type === 'warning'" class="badge bg-warning-soft p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+            <span class="text-warning font-weight-bold">⚠</span>
+          </span>
+          <!-- Error Status Icon -->
+          <span *ngIf="item.type === 'error'" class="badge bg-danger-soft p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 36px; height: 36px;">
+            <span class="text-danger font-weight-bold">✕</span>
+          </span>
+        </div>
+
+        <!-- CONTENT BODY MATRIX -->
+        <div class="flex-grow-1 min-w-0 pr-4">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="text-monospace small font-weight-bold text-warning tracking-wide">{{ item.trackingCode }}</span>
+            <span class="text-muted font-weight-semibold" style="font-size: 11px;">{{ item.createdAt | date:'short' }}</span>
+          </div>
+          <p class="mb-0 text-slate-muted font-weight-medium small leading-relaxed" [class.text-white]="!item.isRead">
+            {{ item.message }}
+          </p>
+        </div>
+
+        <!-- DELETION CONTEXT BUTTON -->
+        <div class="align-self-center">
+          <button 
+            (click)="deleteNotification(item.id, $event)"
+            class="btn btn-link btn-sm text-danger hover-bg-danger-soft p-2 rounded-circle transition"
+            title="Delete Log"
+          >
+            🗑️
+          </button>
+        </div>
+
+        <!-- UNREAD INDICATOR DOT -->
+        <span *ngIf="!item.isRead" class="position-absolute top-50 translate-middle-y end-0 me-2 p-1 bg-primary border border-light rounded-circle" style="width: 8px; height: 8px;"></span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- EMPTY MANIFEST BACKDROP FALLBACK -->
+  <div *ngIf="!isLoading && notifications.length === 0" class="card text-center p-5 border-slate-edge shadow-sm max-w-md mx-auto my-5">
+    <div class="d-flex justify-content-center align-items-center mx-auto bg-slate-sub rounded-circle border border-slate-edge mb-3" style="width: 64px; height: 64px;">
+      <span class="h4 text-muted mb-0">📭</span>
+    </div>
+    <h3 class="h6 font-weight-bold text-white mb-2">Notification Center Empty</h3>
+    <p class="text-muted small mb-0 max-w-xs mx-auto">You do not have any active operational alerts or system broadcasts registered in your feed.</p>
+  </div>
+
+</div>
