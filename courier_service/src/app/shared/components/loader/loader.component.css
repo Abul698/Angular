@@ -1,5 +1,0 @@
-.loader-overlay {
-  background-color: rgba(15, 16, 22, 0.4);
-  backdrop-filter: blur(4px);
-  z-index: 9999; /* যেন সবকিছুর উপরে থাকে */
-}
